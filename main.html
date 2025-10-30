@@ -54,76 +54,110 @@
             height: 300px;
             width: 100%;
         }
-        .dark .chart-grid {
-            color: rgba(255, 255, 255, 0.1) !important;
+        /* Hide spinner arrows on all number inputs (WebKit + Blink) */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
-        .dark .chart-text {
-            color: white !important;
+        /* Hide spinner arrows on Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
         }
-        .dark .chart-tooltip {
-            background-color: rgba(30, 41, 59, 0.9) !important;
-            border-color: rgba(255, 255, 255, 0.1) !important;
-            color: white !important;
+        /* Hide scrollbar buttons (up/down arrows) for the table container and improve cross-browser behavior */
+        /* WebKit/Blink (Chrome, Edge, Safari) */
+        .overflow-auto::-webkit-scrollbar-button,
+        .overflow-x-auto::-webkit-scrollbar-button {
+            display: none;
+            width: 0;
+            height: 0;
         }
-        .floating-btn {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        .overflow-auto::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
         }
-        .floating-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        .overflow-auto::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.08);
+            border-radius: 6px;
         }
-        .currency-selector {
-            transition: all 0.3s ease;
+        .overflow-auto::-webkit-scrollbar-track {
+            background: transparent;
         }
-        .pulse {
-            animation: pulse 2s infinite;
+        /* Firefox */
+        .overflow-auto {
+            scrollbar-width: thin;    /* make scrollbar thin */
+            -ms-overflow-style: none; /* IE 10+: hide legacy arrows */
         }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        body {
-            background-color: #f8fafc;
-        }
-        .dark body {
-            background-color: #0f172a;
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-        }
-        .dark .card {
-            background: #1e293b;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .dark .card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-        }
-        .header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-        .dark .header {
-            background: #1e293b;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-        .table-row {
-            transition: all 0.2s ease;
-        }
-        .table-row:hover {
-            background-color: #f8fafc;
-        }
-        .dark .table-row:hover {
-            background-color: #1e293b;
-        }
+         .dark .chart-grid {
+             color: rgba(255, 255, 255, 0.1) !important;
+         }
+         .dark .chart-text {
+             color: white !important;
+         }
+         .dark .chart-tooltip {
+             background-color: rgba(30, 41, 59, 0.9) !important;
+             border-color: rgba(255, 255, 255, 0.1) !important;
+             color: white !important;
+         }
+         .floating-btn {
+             transition: all 0.3s ease;
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+         }
+         .floating-btn:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+         }
+         .currency-selector {
+             transition: all 0.3s ease;
+         }
+         .pulse {
+             animation: pulse 2s infinite;
+         }
+         @keyframes pulse {
+             0% { transform: scale(1); }
+             50% { transform: scale(1.05); }
+             100% { transform: scale(1); }
+         }
+         body {
+             background-color: #f8fafc;
+         }
+         .dark body {
+             background-color: #0f172a;
+         }
+         .card {
+             background: white;
+             border-radius: 12px;
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+             transition: all 0.3s ease;
+         }
+         .dark .card {
+             background: #1e293b;
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+         }
+         .card:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+         }
+         .dark .card:hover {
+             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+         }
+         .header {
+             background: white;
+             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+         }
+         .dark .header {
+             background: #1e293b;
+             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+         }
+         .table-row {
+             transition: all 0.2s ease;
+         }
+         .table-row:hover {
+             background-color: #f8fafc;
+         }
+         .dark .table-row:hover {
+             background-color: #1e293b;
+         }
        
     </style>
 </head>
@@ -134,7 +168,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
                 <h1 class="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
                     <i data-feather="dollar-sign" class="mr-2"></i>
-                    Expense Go
+                    Expense You
                 </h1>
                 <div class="flex items-center space-x-4">
                     <div class="relative group">
@@ -185,9 +219,9 @@
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <span id="currency-symbol" class="text-gray-500 dark:text-gray-400 sm:text-sm">₹</span>
                                 </div>
-                                <input type="number" step="1" id="amount" name="amount" required
+                                <input type="number" step="0.01" id="amount" name="amount" required
                                     class="focus:ring-primary-500 focus:border-primary-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 dark:border-rupee-600 rounded-md dark:bg-rupee-700 dark:text-white"
-                                    placeholder="0">
+                                    placeholder="0.00">
                             </div>
                         </div>
                         <div>
@@ -300,11 +334,8 @@
                         </h3>
                         <div class="mt-4 md:mt-0 flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
                             <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i data-feather="search" class="text-gray-400"></i>
-                                </div>
-                                <input type="text" id="search-expenses" placeholder="Search expenses..."
-                                    class="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-rupee-600 rounded-md leading-5 bg-white dark:bg-rupee-700 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm dark:text-white">
+                                <input type="text" id="search-expenses" placeholder="Search" aria-label="Search"
+                                    class="block w-full pl-3 pr-3 py-2 border border-gray-300 dark:border-rupee-600 rounded-md leading-5 bg-white dark:bg-rupee-700 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm dark:text-white">
                             </div>
                             <select id="date-filter"
                                 class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 dark:border-rupee-600 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm rounded-md dark:bg-rupee-700 dark:text-white">
@@ -324,7 +355,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="overflow-x-auto">
+                    <div class="overflow-auto">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-rupee-700">
                             <thead class="bg-gray-50 dark:bg-rupee-700">
                                 <tr>
@@ -374,13 +405,17 @@
             'JPY': '¥'
         };
 
-        // Currency exchange rates (simplified for demo)
+        // Currency exchange rates 
+        // Base currency: store all amounts in INR internally.
+        const baseCurrency = 'INR';
+        // exchangeRates: multiply a base (INR) amount to get target currency value.
+        // Example: convertAmount(amountInBase) => amountInBase * exchangeRates[currentCurrency]
         const exchangeRates = {
-            'INR': 1,
-            'USD': 1,
-            'EUR': 1,
-            'GBP': 1,
-            'JPY': 1
+            'INR': 1,        // 1 INR = 1 INR
+            'USD': 0.012,    // 1 INR ≈ 0.012 USD
+            'EUR': 0.011,    // 1 INR ≈ 0.011 EUR
+            'GBP': 0.0095,   // 1 INR ≈ 0.0095 GBP
+            'JPY': 1.80      // 1 INR ≈ 1.80 JPY
         };
 
         // Theme toggle
@@ -422,42 +457,47 @@
         });
         
         // Currency selection
-currencyOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        const newCurrency = option.dataset.currency;
-        // Ask user what to do with the amount input
-        if (amountInput && amountInput.value) {
-            const userChoice = confirm(
-                "Do you want to convert the entered amount to the new currency?\n\n" +
-                "Click OK to convert, Cancel to reset to 0."
-            );
-           if (userChoice) {
-    // Convert directly from current currency to new currency
-    const currentAmount = parseFloat(amountInput.value);
-    const convertedAmount = currentAmount * (exchangeRates[newCurrency] / exchangeRates[currentCurrency]);
-    amountInput.value = convertedAmount ? Math.round(convertedAmount) : 0;
-} else {
-    amountInput.value = 0;
-}
-        }
-        currentCurrency = newCurrency;
-        localStorage.setItem('currency', newCurrency);
-        currentCurrencyElement.textContent = newCurrency;
-        currencySymbolElement.textContent = currencySymbols[newCurrency];
-        currencyDropdown.classList.add('hidden');
+        currencyOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const newCurrency = option.dataset.currency;
+                // If there's an entered amount, ask the user before converting
+                if (amountInput && amountInput.value) {
+                    const userChoice = confirm(
+                        "Do you want to convert the entered amount to the new currency?\n\n" +
+                        "Click OK to convert, Cancel to abort changing currency."
+                    );
+                    if (userChoice) {
+                        const entered = parseFloat(amountInput.value) || 0;
+                        // Convert entered (in currentCurrency) -> base (INR) -> newCurrency
+                        const baseAmount = entered / (exchangeRates[currentCurrency] || 1);
+                        const newAmount = baseAmount * (exchangeRates[newCurrency] || 1);
+                        // preserve cents when converting input
+                        amountInput.value = isFinite(newAmount) ? newAmount.toFixed(2) : '0.00';
+                    } else {
+                        // User cancelled — do not change currency, just close dropdown
+                        currencyDropdown.classList.add('hidden');
+                        return;
+                    }
+                }
+                // Proceed to change currency
+                currentCurrency = newCurrency;
+                localStorage.setItem('currency', newCurrency);
+                currentCurrencyElement.textContent = newCurrency;
+                currencySymbolElement.textContent = currencySymbols[newCurrency];
+                currencyDropdown.classList.add('hidden');
+ 
+                updateSummary();
+                renderExpenseTable();
+                updateCharts();
 
-        updateSummary();
-        renderExpenseTable();
-        updateCharts();
-
-        anime({
-            targets: currentCurrencyElement,
-            scale: [1.2, 1],
-            duration: 500,
-            easing: 'easeOutElastic'
+                anime({
+                    targets: currentCurrencyElement,
+                    scale: [1.2, 1],
+                    duration: 500,
+                    easing: 'easeOutElastic'
+                });
+            });
         });
-    });
-});
 
 
         // Expense tracker functionality
@@ -467,7 +507,7 @@ currencyOptions.forEach(option => {
         const expenseForm = document.getElementById('expense-form');
         const expenseFormSection = document.getElementById('expense-form-section');
         const amountInput = document.getElementById('amount');
-        amountInput.value = 0;
+        amountInput.value = '0.00';
         const categorySelect = document.getElementById('category');
         const descriptionInput = document.getElementById('description');
         const dateInput = document.getElementById('date');
@@ -567,7 +607,9 @@ currencyOptions.forEach(option => {
         function handleAddExpense(e) {
             e.preventDefault();
             
-            const amount = parseFloat(amountInput.value);
+            const enteredAmount = parseFloat(amountInput.value) || 0;
+            // Convert enteredAmount (which is in currentCurrency) to base (INR) for storage.
+            const amount = (enteredAmount) / (exchangeRates[currentCurrency] || 1);
             const category = categorySelect.value;
             const description = descriptionInput.value.trim();
             const date = dateInput.value;
@@ -584,6 +626,7 @@ currencyOptions.forEach(option => {
             
             const expense = {
                 id: Date.now(),
+                // store amount in base (INR)
                 amount,
                 category,
                 description,
@@ -594,7 +637,7 @@ currencyOptions.forEach(option => {
             saveExpenses();
             
             // Reset form
-            amountInput.value = 0;
+            amountInput.value = '0.00';
             categorySelect.value = '';
             descriptionInput.value = '';
             dateInput.valueAsDate = new Date();
@@ -703,8 +746,8 @@ currencyOptions.forEach(option => {
                         </td>
                         <td class="px-6 py-4 text-sm text-gray-900 dark:text-white">${expense.description || '—'}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white font-medium">
-    ${currencySymbolElement.textContent}${parseInt(expense.amount, 10)}
-</td>
+                            ${formatCurrency(expense.amount)}
+                        </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <button onclick="deleteExpense(${expense.id})" class="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300">
                                 <i data-feather="trash-2"></i>
@@ -757,11 +800,29 @@ currencyOptions.forEach(option => {
         function initCharts() {
             const barCtx = document.getElementById('bar-chart').getContext('2d');
             const pieCtx = document.getElementById('pie-chart').getContext('2d');
-            
+
             const isDark = document.documentElement.classList.contains('dark');
-            const gridColor = document.documentElement.classList.contains('dark') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-            const textColor = document.documentElement.classList.contains('dark') ? 'white' : '#1f2937';
-            
+            const gridColor = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+            const textColor = isDark ? 'white' : '#1f2937';
+            const tooltipBg = isDark ? 'rgba(30,41,59,0.9)' : 'rgba(255,255,255,0.9)';
+            const tooltipBorder = isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+
+            const barColors = [
+                'rgba(59, 130, 246, 0.7)',
+                'rgba(16, 185, 129, 0.7)',
+                'rgba(245, 158, 11, 0.7)',
+                'rgba(244, 63, 94, 0.7)',
+                'rgba(139, 92, 246, 0.7)',
+                'rgba(20, 184, 166, 0.7)',
+                'rgba(6, 182, 212, 0.7)',
+                'rgba(124, 58, 237, 0.7)'
+            ];
+            const barBorderColors = barColors.map(c => c.replace(/0\.7\)$/, '1)'));
+
+            // Destroy existing charts if present to avoid duplication
+            if (barChart && typeof barChart.destroy === 'function') barChart.destroy();
+            if (pieChart && typeof pieChart.destroy === 'function') pieChart.destroy();
+
             barChart = new Chart(barCtx, {
                 type: 'bar',
                 data: {
@@ -769,26 +830,8 @@ currencyOptions.forEach(option => {
                     datasets: [{
                         label: 'Amount Spent',
                         data: [],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.7)',
-                            'rgba(16, 185, 129, 0.7)',
-                            'rgba(245, 158, 11, 0.7)',
-                            'rgba(244, 63, 94, 0.7)',
-                            'rgba(139, 92, 246, 0.7)',
-                            'rgba(20, 184, 166, 0.7)',
-                            'rgba(6, 182, 212, 0.7)',
-                            'rgba(124, 58, 237, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(16, 185, 129, 1)',
-                            'rgba(245, 158, 11, 1)',
-                            'rgba(244, 63, 94, 1)',
-                            'rgba(139, 92, 246, 1)',
-                            'rgba(20, 184, 166, 1)',
-                            'rgba(6, 182, 212, 1)',
-                            'rgba(124, 58, 237, 1)'
-                        ],
+                        backgroundColor: barColors,
+                        borderColor: barBorderColors,
                         borderWidth: 1
                     }]
                 },
@@ -796,76 +839,57 @@ currencyOptions.forEach(option => {
                     responsive: true,
                     maintainAspectRatio: false,
                     scales: {
+                        x: {
+                            grid: { color: gridColor },
+                            ticks: { color: textColor }
+                        },
                         y: {
                             beginAtZero: true,
-                            grid: {
-                                color: gridColor
-                            },
+                            grid: { color: gridColor },
                             ticks: {
                                 color: textColor,
                                 callback: function(value) {
-                                    return formatCurrency(value);
+                                    // Show formatted currency in axis ticks (value is already in displayed currency)
+                                    if (currentCurrency === 'INR') {
+                                        return '₹' + Number(value).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                                    }
+                                    return new Intl.NumberFormat(undefined, {
+                                        style: 'currency',
+                                        currency: currentCurrency,
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }).format(value);
                                 }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: gridColor
-                            },
-                            ticks: {
-                                color: textColor
                             }
                         }
                     },
                     plugins: {
-                        legend: {
-                            display: false,
-                            labels: {
-                                color: textColor
-                            }
-                        },
+                        legend: { display: false, labels: { color: textColor } },
                         tooltip: {
-                            backgroundColor: document.documentElement.classList.contains('dark') ? 'rgba(30, 41, 59, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+                            backgroundColor: tooltipBg,
                             titleColor: textColor,
                             bodyColor: textColor,
-                            borderColor: document.documentElement.classList.contains('dark') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+                            borderColor: tooltipBorder,
                             borderWidth: 1,
                             callbacks: {
                                 label: function(context) {
+                                    // context.raw contains the numeric value for bar tooltip
                                     return formatCurrency(context.raw);
                                 }
                             }
-                            }
                         }
                     }
-                });
-            
+                }
+            });
+
             pieChart = new Chart(pieCtx, {
                 type: 'pie',
                 data: {
                     labels: [],
                     datasets: [{
                         data: [],
-                        backgroundColor: [
-                            'rgba(59, 130, 246, 0.7)',
-                            'rgba(16, 185, 129, 0.7)',
-                            'rgba(245, 158, 11, 0.7)',
-                            'rgba(244, 63, 94, 0.7)',
-                            'rgba(139, 92, 246, 0.7)',
-                            'rgba(20, 184, 166, 0.7)',
-                            'rgba(6, 182, 212, 0.7)',
-                            'rgba(124, 58, 237, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgba(59, 130, 246, 1)',
-                            'rgba(16, 185, 129, 1)',
-                            'rgba(245, 158, 11, 1)',
-                            'rgba(244, 63, 94, 1)',
-                            'rgba(139, 92, 246, 1)',
-                            'rgba(20, 184, 166, 1)',
-                            'rgba(6, 182, 212, 1)',
-                            'rgba(124, 58, 237, 1)'
-                        ],
+                        backgroundColor: barColors,
+                        borderColor: barBorderColors,
                         borderWidth: 1
                     }]
                 },
@@ -873,24 +897,19 @@ currencyOptions.forEach(option => {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                color: textColor
-                            }
-                        },
+                        legend: { position: 'right', labels: { color: textColor } },
                         tooltip: {
-                            backgroundColor: document.documentElement.classList.contains('dark') ? 'rgba(30, 41, 59, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+                            backgroundColor: tooltipBg,
                             titleColor: textColor,
                             bodyColor: textColor,
-                            borderColor: document.documentElement.classList.contains('dark') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
+                            borderColor: tooltipBorder,
                             borderWidth: 1,
                             callbacks: {
                                 label: function(context) {
                                     const label = context.label || '';
                                     const value = context.raw || 0;
-                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                    const percentage = Math.round((value / total) * 100);
+                                    const total = (context.dataset && context.dataset.data) ? context.dataset.data.reduce((a, b) => a + b, 0) : 1;
+                                    const percentage = Math.round((value / (total || 1)) * 100);
                                     return `${label}: ${formatCurrency(value)} (${percentage}%)`;
                                 }
                             }
