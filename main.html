@@ -221,7 +221,7 @@
                                 </div>
                                 <input type="number" step="0.01" id="amount" name="amount" required
                                     class="focus:ring-primary-500 focus:border-primary-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 dark:border-rupee-600 rounded-md dark:bg-rupee-700 dark:text-white"
-                                    placeholder="0.00">
+                                    placeholder="0">
                             </div>
                         </div>
                         <div>
@@ -413,9 +413,9 @@
         const exchangeRates = {
             'INR': 1,        // 1 INR = 1 INR
             'USD': 0.012,    // 1 INR ≈ 0.012 USD
-            'EUR': 0.011,    // 1 INR ≈ 0.011 EUR
-            'GBP': 0.0095,   // 1 INR ≈ 0.0095 GBP
-            'JPY': 1.80      // 1 INR ≈ 1.80 JPY
+            'EUR': 0.0097,    // 1 INR ≈ 0.011 EUR
+            'GBP': 0.0086,   // 1 INR ≈ 0.0095 GBP
+            'JPY': 1.74      // 1 INR ≈ 1.80 JPY
         };
 
         // Theme toggle
@@ -472,7 +472,7 @@
                         const baseAmount = entered / (exchangeRates[currentCurrency] || 1);
                         const newAmount = baseAmount * (exchangeRates[newCurrency] || 1);
                         // preserve cents when converting input
-                        amountInput.value = isFinite(newAmount) ? newAmount.toFixed(2) : '0.00';
+                        amountInput.value = isFinite(newAmount) ? newAmount.toFixed(2) : '0';
                     } else {
                         // User cancelled — do not change currency, just close dropdown
                         currencyDropdown.classList.add('hidden');
@@ -507,7 +507,7 @@
         const expenseForm = document.getElementById('expense-form');
         const expenseFormSection = document.getElementById('expense-form-section');
         const amountInput = document.getElementById('amount');
-        amountInput.value = '0.00';
+        amountInput.value = '0';
         const categorySelect = document.getElementById('category');
         const descriptionInput = document.getElementById('description');
         const dateInput = document.getElementById('date');
@@ -591,17 +591,29 @@
         
         // Format currency amount
         function formatCurrency(amount) {
-            const convertedAmount = convertAmount(amount);
-            if (currentCurrency === 'INR') {
-                return '₹' + convertedAmount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-            }
-            return new Intl.NumberFormat(undefined, {
-                style: 'currency',
-                currency: currentCurrency,
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            }).format(convertedAmount);
-        }
+    const convertedAmount = convertAmount(amount);
+
+    // Check if the amount has decimals
+    const hasDecimal = convertedAmount % 1 !== 0;
+
+    if (currentCurrency === 'INR') {
+        // If no decimal part, show as whole number; otherwise show with up to 2 decimals
+        const displayAmount = hasDecimal
+            ? convertedAmount.toFixed(2).replace(/\.?0+$/, '') // remove trailing zeros
+            : convertedAmount.toFixed(0);
+        return '₹' + displayAmount.replace(/\d(?=(\d{3})+\b)/g, '$&,');
+    }
+
+    // For other currencies (USD, EUR, etc.)
+    return new Intl.NumberFormat(undefined, {
+        style: 'currency',
+        currency: currentCurrency,
+        minimumFractionDigits: hasDecimal ? 2 : 0,
+        maximumFractionDigits: 2
+    }).format(convertedAmount);
+}
+
+
         
         // Handle form submission
         function handleAddExpense(e) {
@@ -637,7 +649,7 @@
             saveExpenses();
             
             // Reset form
-            amountInput.value = '0.00';
+            amountInput.value = '0';
             categorySelect.value = '';
             descriptionInput.value = '';
             dateInput.valueAsDate = new Date();
